@@ -1,0 +1,31 @@
+.example-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  float: left;
+  width: 100%;
+  background: #fefefe;
+}
+
+.sidebar ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100px;
+  height: 60px;
+}
+
+.sidebar ul li:hover {
+  background: #f4f4f4;
+  cursor: pointer;
+}

@@ -1,0 +1,77 @@
+<mat-card class="content-card">
+    <h2>Operators</h2>
+
+    <mat-card class="config-operators">
+        <h5>Add Operators</h5>
+        <form class="formwidth" (ngSubmit)="onSubmit($event)">
+            <mat-form-field>
+                <input matInput placeholder="Enter operator name" [formControl]="opName" required>
+                <mat-error *ngIf="opName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card>
+
+    <h4>Config Operators</h4>
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of operatorsList" (opened)="getData(item)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    Operator description goes here
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="table-container">
+                <table class="mat-table responsive-table highlight">
+                    <thead>
+                        <tr>
+                            <th>Prefix </th>
+                            <th> Cost </th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="mat-row" *ngFor="let element of dataSource">
+                            <td> {{element.prefix}} </td>
+                            <td> {{element.cost}} </td>
+                            <td>
+                                <button>Ed</button>
+                                <button>Del</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- <form> -->
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Prefix">
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Cost">
+                                    </mat-form-field>
+                                </td>
+                            <!-- </form> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </mat-expansion-panel>
+        <!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Self aware panel
+                </mat-panel-title>
+                <mat-panel-description>
+                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+        </mat-expansion-panel> -->
+    </mat-accordion>
+</mat-card>

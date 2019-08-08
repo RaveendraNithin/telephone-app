@@ -1,0 +1,24 @@
+<mat-card class="content-card">
+    <h2>Home</h2>
+
+    <mat-card class="config-operators">
+        <h5>Check Results</h5>
+        <form class="formwidth" (ngSubmit)="onSubmit($event)">
+            <mat-form-field>
+                <input matInput placeholder="Enter phone number" [formControl]="number" minlength=10 maxlength=10
+                    required>
+                <mat-error *ngIf="number.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card>
+    <h5></h5>
+    <mat-card class="config-operators" *ngIf="result">
+        <h5>Result</h5>
+        <mat-list>
+            <mat-list-item> Operator : {{result.name}} </mat-list-item>
+            <mat-list-item> Cost: {{result.cost}} </mat-list-item>
+        </mat-list>
+    </mat-card>
+
+
+</mat-card>
