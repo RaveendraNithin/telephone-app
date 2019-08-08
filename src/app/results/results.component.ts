@@ -25,19 +25,20 @@ export class ResultsComponent implements OnInit {
         '';
   }
 
+  // submit function
   onSubmit(e) {
     if (!this.number.invalid) {
-      console.log(this.number.value);
       this.getresults(this.number.value);
     }
   }
 
+  // get result function
   getresults(numString) {
-    let filteredOperator = [];
-    this.dataList.forEach(operator => {
-      operator.data.forEach(item => {
-        if (numString.startsWith(item.prefix)) {
-          filteredOperator.push({
+    let filteredOperator = []; // initialise an array
+    this.dataList.forEach(operator => { // loop through the operators list
+      operator.data.forEach(item => { //  loop through the operators prefix & cost data
+        if (numString.startsWith(item.prefix)) { // check whether entered number starts with prefix
+          filteredOperator.push({ // if true , push tho the array as object
             name: operator.name,
             id: operator.id,
             prefix: item.prefix,
@@ -47,22 +48,21 @@ export class ResultsComponent implements OnInit {
         }
       });
     });
-    console.log(filteredOperator);
     filteredOperator.sort((a, b) => {
-      if(a.length > b.length){
+      // sort filtered list based on length
+      if (a.length > b.length) {
         return -1;
-      } else if(a.length < b.length){
+      } else if (a.length < b.length) {
         return 1;
       } else {
-        if(a.cost > b.cost){
+        // sort filtered list based on cost, when length is equal
+        if (a.cost > b.cost) {
           return 1;
-        } else if(a.cost < b.cost){
+        } else if (a.cost < b.cost) {
           return -1;
         }
       }
     });
-    console.log('sorted');
-    console.log(filteredOperator);
     this.result = filteredOperator[0];
   }
 

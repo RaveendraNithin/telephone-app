@@ -27,20 +27,18 @@ export class OperatorsComponent implements OnInit {
     return this.opName.hasError('required') ? 'You must enter a name' : '';
   }
 
+  // submit function
   onSubmit(e) {
-    console.log(this.opName.value);
     if (this.opName.value) {
       this.operatorsList.push({ name: this.opName.value, id: '' });
     }
   }
 
+  // get data of the selected tab
   getData(element) {
-    console.log(element);
     const dataItem = this.dataList.filter(item => item.id === element.id);
     if (dataItem.length > 0) {
       this.dataSource = dataItem[0].data;
-      console.log(this.dataSource);
-      console.log(typeof (this.dataSource));
     } else {
       this.dataSource = [];
     }
