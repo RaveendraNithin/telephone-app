@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OperatorsComponent } from './operators.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('OperatorsComponent', () => {
   let component: OperatorsComponent;
@@ -8,7 +9,8 @@ describe('OperatorsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OperatorsComponent ]
+      declarations: [ OperatorsComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -16,10 +18,15 @@ describe('OperatorsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OperatorsComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('opName invalid when empty', () => {
+    expect(component.opName.valid).toBeFalsy();
   });
 });

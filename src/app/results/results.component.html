@@ -6,7 +6,7 @@
         <form class="formwidth" (ngSubmit)="onSubmit($event)">
             <mat-form-field>
                 <input matInput placeholder="Enter phone number" [formControl]="number" minlength=10 maxlength=10
-                    required>
+                    required />
                 <mat-error *ngIf="number.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
         </form>

@@ -5,7 +5,7 @@
         <h5>Add Operators</h5>
         <form class="formwidth" (ngSubmit)="onSubmit($event)">
             <mat-form-field>
-                <input matInput placeholder="Enter operator name" [formControl]="opName" required>
+                <input matInput placeholder="Enter operator name" [formControl]="opName" required />
                 <mat-error *ngIf="opName.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
         </form>
